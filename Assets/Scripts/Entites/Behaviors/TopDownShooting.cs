@@ -12,9 +12,12 @@ public class TopDownShooting : MonoBehaviour
 
     public GameObject testPrefab;
 
+    private ObjectPool _pool;
+
     private void Awake()
     {
         _controller = GetComponent<TopDownController>();
+        _pool = GameObject.FindObjectOfType<ObjectPool>();
     }
 
     private void Start()
@@ -51,7 +54,7 @@ public class TopDownShooting : MonoBehaviour
     private void CreateProjectile(RangedAttackSO rangedAttackSO, float angle)
     {
         // 화살 생성 -> 다음강에서 구조개선을 위해 잠시 흉물스러운 이름 참아주세요!
-        GameObject obj = Instantiate(testPrefab);
+        GameObject obj = _pool.SpawnFromPool(rangedAttackSO.bulletNameTag);
 
         // 발사체 기본 세팅
         obj.transform.position = _projectileSpawnPos.position;
