@@ -5,8 +5,9 @@ public class PlayerInputController : TopDownController
 {
     private Camera _camera;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _camera = Camera.main;
     }
 
@@ -28,6 +29,6 @@ public class PlayerInputController : TopDownController
 
     public void OnFire(InputValue value)
     {
-        _isAttacking = value.isPressed;
+        IsAttacking = value.isPressed;
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class TopDownController : MonoBehaviour
@@ -9,9 +10,17 @@ public class TopDownController : MonoBehaviour
     public event Action<Vector2> OnLookEvent;
     public event Action OnAttackEvent;
 
-    protected bool _isAttacking { get; set; }
+    protected bool IsAttacking { get; set; }
 
     private float _timeSinceLastAttack = float.MaxValue;
+
+    // protected 한 이유 : 나만 바꾸고 싶지만 가져가는건 내 상속받는 클래스들도 볼 수 있게
+    protected CharacterStatHandler Stats { get; private set; }
+
+    protected virtual void Awake()
+    {
+        Stats = GetComponent<CharacterStatHandler>();
+    }
 
     private void Update()
     {
@@ -20,12 +29,11 @@ public class TopDownController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        // TODO : 매직 넘버 수정
-        if(_timeSinceLastAttack < 0.2f)
+        if(_timeSinceLastAttack < Stats.CurrentStat._attackSO.delay)
         {
             _timeSinceLastAttack += Time.deltaTime;
         }
-        else if(_isAttacking && _timeSinceLastAttack >= 0.2f)
+        else if(IsAttacking && _timeSinceLastAttack >= Stats.CurrentStat._attackSO.delay)
         {
             _timeSinceLastAttack = 0f;
             CallAttackEvent();
