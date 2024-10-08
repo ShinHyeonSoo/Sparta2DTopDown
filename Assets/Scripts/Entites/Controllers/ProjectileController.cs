@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,9 +56,27 @@ public class ProjectileController : MonoBehaviour
         // _attackData.target에 포함되는 레이어인지 확인합니다.
         else if (IsLayerMatched(_attackData.target.value, collision.gameObject.layer))
         {
-            // 아야! 피격 구현에서 추가 예정
+            HealthSystem healthSystem = collision.GetComponent<HealthSystem>();
+            if (healthSystem != null)
+            {
+                bool isAttackApplied = healthSystem.ChangeHealth(-_attackData.power);
+
+                if(isAttackApplied && _attackData.isOnKnockback)
+                {
+                    ApplyKnockback(collision);
+                }
+            }
             // 충돌한 지점에서 발사체를 파괴합니다.
             DestroyProjectile(collision.ClosestPoint(transform.position), _fxOnDestory);
+        }
+    }
+
+    private void ApplyKnockback(Collider2D collision)
+    {
+        TopDownMovement movement = collision.GetComponent<TopDownMovement>();
+        if (movement != null)
+        {
+            movement.ApplyKnockback(transform, _attackData.knockbackPower, _attackData.knockbackTime);
         }
     }
 

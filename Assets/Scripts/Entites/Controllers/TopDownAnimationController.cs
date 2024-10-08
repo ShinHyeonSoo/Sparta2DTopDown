@@ -10,16 +10,24 @@ public class TopDownAnimationController : AnimationController
     private static readonly int Attack = Animator.StringToHash("attack");
 
     private readonly float magnituteThreshold = 0.5f;
+    private HealthSystem _healthSystem;
 
     protected override void Awake()
     {
         base.Awake();
+        _healthSystem = GetComponent<HealthSystem>();
     }
 
     private void Start()
     {
         _controller.OnAttackEvent += Attacking;
         _controller.OnMoveEvent += Move;
+
+        if(_healthSystem != null)
+        {
+            _healthSystem.OnDamage += Hit;
+            _healthSystem.OnInvincibilityEnd += InvincibilityEnd;
+        }
     }
     private void Move(Vector2 vector)
     {

@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 108907277}
   - component: {fileID: 108907278}
   - component: {fileID: 108907279}
+  - component: {fileID: 108907280}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -348,6 +349,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e62f537f1db614eacacbfca5f8d0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &108907280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108907269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c18c4024aab5a541a51d3b00dd86561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthChangeDelay: 0.5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,6 +2561,8 @@ GameObject:
   - component: {fileID: 1734517131}
   - component: {fileID: 1734517130}
   - component: {fileID: 1734517134}
+  - component: {fileID: 1734517135}
+  - component: {fileID: 1734517136}
   m_Layer: 6
   m_Name: Goblin
   m_TagString: Untagged
@@ -2666,9 +2682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f43db2a0c1859b4ab18b4f892e64717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followRange: 20
-  targetTag: Player
-  characterRenderer: {fileID: 989999398}
+  _followRange: 0
+  _targetTag: Player
+  _characterRenderer: {fileID: 989999398}
 --- !u!114 &1734517132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,6 +2736,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1734517135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734517126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c18c4024aab5a541a51d3b00dd86561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthChangeDelay: 0.5
+--- !u!114 &1734517136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734517126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dee758fd2153094394c4d61365112ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1766959358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3674,8 @@ GameObject:
   - component: {fileID: 1826759270}
   - component: {fileID: 1826759273}
   - component: {fileID: 1826759272}
+  - component: {fileID: 1826759274}
+  - component: {fileID: 1826759275}
   m_Layer: 6
   m_Name: OrcShaman
   m_TagString: Untagged
@@ -3834,6 +3877,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPos: {fileID: 1766959359}
+--- !u!114 &1826759274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826759262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c18c4024aab5a541a51d3b00dd86561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthChangeDelay: 0.5
+--- !u!114 &1826759275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826759262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dee758fd2153094394c4d61365112ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2142519584
 GameObject:
   m_ObjectHideFlags: 0
